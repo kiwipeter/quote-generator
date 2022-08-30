@@ -7,20 +7,19 @@ const loader = document.getElementById('loader');
 
 let apiQuotes = [];
 
-//Show loading
-function loading() {
+
+function ShowloadingSpinner() {
     loader.hidden = false;
     quoteContainer.hidden = true;
 }
 
-//Hide loading
-function complete() {
+function removeLoadingSpinner() {
     quoteContainer.hidden = false
     loader.hidden = true;
 }
 //Show New Quote
 function newQuote() {
-    loading();
+    ShowloadingSpinner();
     // Pick a random quote
     const quote = localQuotes[Math.floor(Math.random() * localQuotes.length)];
    // Check if Author field is blank and replace it with 'unknown author'
@@ -37,20 +36,23 @@ function newQuote() {
    }
    // Set Quote, Hide loader
    quoteText.textContent = quote.text;
-   complete();
+   removeLoadingSpinner();
 }
 
 // Get Quotes from API
 async function getQuotes() {
-    loading();
+    ShowloadingSpinner();
    const apiUrl = 'https://quotable.io/random';
     try {
         const response = await fetch(apiUrl);
         apiQuotes = await response.json();
         newQuote();
+       
         } catch (error) {
+            console.log(error)
         //Catch Error Here
    }
+   
 }
 //Tweet Quote
 function tweetQuote() {

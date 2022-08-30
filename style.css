@@ -103,8 +103,7 @@ button:active {
   .quote-container {
     margin: auto 10px;
   }
-
-  .quote-text
+  .quote-text {
   font-size: 2.5rem;
-  
+  }
 }
