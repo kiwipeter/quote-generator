@@ -14,7 +14,7 @@ function ShowloadingSpinner() {
 }
 
 function removeLoadingSpinner() {
-    quoteContainer.hidden = false
+    quoteContainer.hidden = false;
     loader.hidden = true;
 }
 //Show New Quote
@@ -42,14 +42,15 @@ function newQuote() {
 // Get Quotes from API
 async function getQuotes() {
     ShowloadingSpinner();
-   const apiUrl = 'https://quotable.io/random';
+    const apiUrl = 'https://type.fit/api/quotes';
+   //const apiUrl = 'https://quotable.io/random';
     try {
         const response = await fetch(apiUrl);
         apiQuotes = await response.json();
         newQuote();
        
         } catch (error) {
-            console.log(error)
+        
         //Catch Error Here
    }
    
